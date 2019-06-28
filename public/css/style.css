@@ -171,6 +171,9 @@
   .flex-container {
     display: flex;
     flex-direction: row; }
+  #header{
+    cursor: pointer;
+  }
   
   @media (max-width: 1200px) {
     .info .hv:after, .info .knlv:after, .info .ktcm:after, .info .npdl:after {

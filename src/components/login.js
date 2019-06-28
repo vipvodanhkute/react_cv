@@ -7,6 +7,7 @@ class Login extends Component {
     login(){
         if (this.refs.user.value == "vexere" && this.refs.password.value == "vxr2019") {
           this.props.status('info');
+          this.props.header();
       } else {
           document.querySelector('.title').innerHTML = "Sai Username or Password";
       }

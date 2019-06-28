@@ -53,7 +53,7 @@ class Info extends Component {
                         </div>
                     </div>
                     <div className="add">
-                        <img src="./public/image/59798569_297465941189653_437940618124066816_n.jpg" alt="image" />
+                        <img src="./image/59798569_297465941189653_437940618124066816_n.jpg" alt="image" />
                         <div className="info">
                             <p><i className="far fa-calendar-alt" /> 20/01/1996</p>
                             <p><i className="fas fa-user" /> Name</p>
