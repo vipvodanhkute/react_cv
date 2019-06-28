@@ -1,20 +1,44 @@
 import React, { Component } from 'react';
 class Login extends Component {
-    constructor(props){
-        super(props);
-        this.login=this.login.bind(this);
+  constructor(props) {
+    super(props);
+    this.state={
+      status:false
     }
-    login(){
-        if (this.refs.user.value == "vexere" && this.refs.password.value == "vxr2019") {
-          this.props.status('info');
-          this.props.header();
-      } else {
-          document.querySelector('.title').innerHTML = "Sai Username or Password";
+    this.login = this.login.bind(this);
+  }
+  componentWillMount(){
+    this.getApi()
+    .then((data,err)=>{
+      if(data.status===200||data.status===201){
+        this.setState({status:!this.state.status})
       }
-      }
+    })
+
+  }
+  async getApi() {
+   const result= await fetch("https://uat-api.vexere.net/v1/oauth/token",
+      {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        method: "POST",
+        body: JSON.stringify({grant_type:"client_credentials","client_id":"5babac18-7774-4c00-837e-ce0be24f1ce0",client_secret:"7bc97196-280c-4595-83fd-3da8a0d7d190"})
+      })
+    return result
+  }
+  login() {
+    if (this.refs.user.value == "vexere" && this.refs.password.value == "vxr2019"&&this.state.status) {
+      this.props.status('info');
+      this.props.header();
+    } else {
+      document.querySelector('.title').innerHTML = "ERROR!";
+    }
+  }
   render() {
     return (
-        <div>
+      <div>
         <section id="login">
           <div className="container">
             <div className="row">
@@ -28,7 +52,7 @@ class Login extends Component {
                         <span className="input-group-text user">
                           <i className="fas fa-user" /></span>
                       </div>
-                      <input ref="user" style={{border: '0px solid white'}} type="text" className="form-control username" placeholder="Username" />
+                      <input ref="user" style={{ border: '0px solid white' }} type="text" className="form-control username" placeholder="Username" />
                     </div>
                     <div className="input-group mb-3 input-group-lg">
                       <div className="input-group-prepend">
@@ -36,7 +60,7 @@ class Login extends Component {
                           <i className="fas fa-lock" />
                         </span>
                       </div>
-                      <input ref="password" style={{border: '0px solid white'}} type="password" className="form-control password" placeholder="Password" />
+                      <input ref="password" style={{ border: '0px solid white' }} type="password" className="form-control password" placeholder="Password" />
                     </div>
                   </form>
                   <button className="btn bg-primary login w-100 text-white mb-3" onClick={this.login}>LOGIN</button>
