@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 class Header extends Component {
     onClick(){
-        this.props.header();
-        this.props.status("login");
+        this.props.logout();
+        this.props.history.push('/');
     }
     render() {
         return (
@@ -15,10 +15,10 @@ class Header extends Component {
                     <div className="collapse navbar-collapse" id="collapsibleNavId">
                         <ul className="navbar-nav  mt-2 mt-lg-0 ml-auto">
                             <li className="nav-item">
-                                <a className="nav-link">Hi, Admin</a>
+                                {this.props.status?"":<a className="nav-link">Hi, Admin</a>}
                             </li>
                             <li className="nav-item">
-                                <a onClick={this.onClick.bind(this)} className="nav-link" id="header">Login</a>
+                            {this.props.status?"":<a onClick={this.onClick.bind(this)} className="nav-link" id="header">Logout</a>}
                             </li>
                         </ul>
                     </div>

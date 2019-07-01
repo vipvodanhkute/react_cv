@@ -6,6 +6,7 @@ class Login extends Component {
       status:false
     }
     this.login = this.login.bind(this);
+    this.loginAsGuest = this.loginAsGuest.bind(this);
   }
   componentWillMount(){
     this.getApi()
@@ -29,12 +30,15 @@ class Login extends Component {
     return result
   }
   login() {
-    if (this.refs.user.value == "vexere" && this.refs.password.value == "vxr2019"&&this.state.status) {
-      this.props.status('info');
-      this.props.header();
+    if (this.refs.user.value === "vexere" && this.refs.password.value === "vxr2019"&&this.state.status) {
+      this.props.history.push('/pages');
     } else {
       document.querySelector('.title').innerHTML = "ERROR!";
     }
+  }
+  loginAsGuest(){
+    this.props.loginAsGuest();
+    this.props.history.push('/pages');
   }
   render() {
     return (
@@ -63,7 +67,8 @@ class Login extends Component {
                       <input ref="password" style={{ border: '0px solid white' }} type="password" className="form-control password" placeholder="Password" />
                     </div>
                   </form>
-                  <button className="btn bg-primary login w-100 text-white mb-3" onClick={this.login}>LOGIN</button>
+                  <button className="btn bg-primary login w-100 text-white mb-3" onClick={this.login}>Login</button>
+                  <button className="btn bg-dark login w-100 text-white mb-3" onClick={this.loginAsGuest}>Login as Guest</button>
                   <div className="row">
                     <div className="col">
                       <input type="checkbox" defaultChecked />

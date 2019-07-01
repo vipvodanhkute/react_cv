@@ -143,7 +143,7 @@ class Javascript extends Component {
                 var n = c4Arr[i].length;
                 for (let j = 0, k = n - 1; j <= n / 2, k >= n / 2; j++ , k--) {
                 }
-                for (let j = 0, k = n - 1; j <= n, k >= 0; j++ , k--) {
+                for (let j = 0,k = n - 1;j <= n, k >= 0; j++ , k--) {
                     if (c4Arr[i].charAt(j) !== c4Arr[i].charAt(k)) {
                         result[i] = "N0";
                         break;
