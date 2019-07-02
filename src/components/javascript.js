@@ -340,12 +340,25 @@ class Javascript extends Component {
     }
     render() {
         var element = this.state.question.map((value, index) => {
+            if(this.props.status){
+                if(index%2==0){
+                    return ''
+                }else{
+                    return <Unit
+                    key={index}
+                    title={value.title}
+                    number={index + 1}
+                    onClick={value.function}
+                />
+                }
+            }else{
             return <Unit
                 key={index}
                 title={value.title}
                 number={index + 1}
                 onClick={value.function}
             />
+            }
         })
         return (
             <div>

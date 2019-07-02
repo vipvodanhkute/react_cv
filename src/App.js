@@ -29,8 +29,8 @@ class App extends Component {
         <Route path="/" exact render={props=><Login {...props} loginAsGuest={this.loginAsGuest.bind(this)} />} />
         <Route path="/pages" render={props=><Header {...props} logout={this.logout.bind(this)} status={this.state.loginAsGuest}/>} />
         <Route path="/pages" exact component={Pages} />
-        <Route path="/pages/info" component={Info} />
-        <Route path="/pages/bt" component={Javascript} />
+    <Route path="/pages/info" component={()=><Info status={this.state.loginAsGuest}/>}/>
+        <Route path="/pages/bt" component={()=><Javascript status={this.state.loginAsGuest} />}/>
       </Router>
     );
   }

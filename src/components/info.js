@@ -54,6 +54,7 @@ class Info extends Component {
                     </div>
                     <div className="add">
                         <img src="../image/59798569_297465941189653_437940618124066816_n.jpg" alt="hinh" />
+                        {this.props.status?"":
                         <div className="info">
                             <p><i className="far fa-calendar-alt" /> 20/01/1996</p>
                             <p><i className="fas fa-user" /> Name</p>
@@ -61,6 +62,7 @@ class Info extends Component {
                             <p><i className="fas fa-address-card" /> Nha Trang - Khánh Hòa</p>
                             <p><i className="fab fa-facebook-square" /><a href="https://www.facebook.com/huynhvannnhu"> Như Huỳnh</a></p>
                         </div>
+                        }
                         <h3 className="kn">Kỹ Năng</h3>
                         <a onClick={this.onClick}>
                             <p>JAVASCRIPT</p>
