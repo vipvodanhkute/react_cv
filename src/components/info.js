@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 class Info extends Component {
     constructor(props){
         super(props);
         this.onClick=this.onClick.bind(this);
     }
     onClick(){
-        this.props.status('javascript');
+        this.props.history.push('/pages/bt');
     }
     render() {
         return (
@@ -97,4 +98,9 @@ class Info extends Component {
         );
     }
 }
-export default Info
+const mapsToState=(state)=>{
+    return {
+        status:state.loginAsGuest
+    }
+}
+export default connect(mapsToState)(Info)

@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state={
-      status:false
+      status:true
     }
     this.login = this.login.bind(this);
     this.loginAsGuest = this.loginAsGuest.bind(this);
   }
-  componentWillMount(){
-    this.getApi()
-    .then((data,err)=>{
-      if(data.status===200||data.status===201){
-        this.setState({status:!this.state.status})
-      }
-    })
+  // componentWillMount(){
+  //   this.getApi()
+  //   .then((data,err)=>{
+  //     if(data.status===200||data.status===201){
+  //       this.setState({status:!this.state.status})
+  //     }
+  //   })
 
-  }
+  // }
   async getApi() {
    const result= await fetch("https://uat-api.vexere.net/v1/oauth/token",
       {
@@ -37,7 +38,7 @@ class Login extends Component {
     }
   }
   loginAsGuest(){
-    this.props.loginAsGuest();
+    this.props.dispatch({type:'loginAsGuest'});
     this.props.history.push('/pages');
   }
   render() {
@@ -100,5 +101,4 @@ class Login extends Component {
     );
   }
 }
-
-export default Login;
+export default connect()(Login);

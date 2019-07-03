@@ -204,29 +204,33 @@ footer{
     flex-direction:row;
 }
 .menu{
-    background-color: white;
-    border-bottom: 2px solid black;
-    padding: 30px;
-    line-height: 100%;
-   .sub-menu{
-    float:right;
-    margin-left: auto;
-    display: inline-block;
     .button{
         display: none;
+        width: 100%;
+        background-color: blue;
+        text-align: right;
+        padding:10px 10px;
+        .fas{
+            font-size: 30px;
+        }
+    }
+    .mobile{
+        display:block;
     }
     ul{
+        padding: 0;
+        background-color: gray;
         li{
-            display: inline;
-            margin-left: 20px;
-            margin-right: 20px;
-            &:hover{
-                padding: 20px;
-                border: 5px solid blue;
+            list-style-type: none;
+            display: inline-block;
+            text-align: right;
+            padding: 10px 20px;
+            a{
+                color: white;
+                padding: 20px; 
             }
         }
     }
-   }
 }
 @media (max-width:1200px){
     .info{
@@ -247,21 +251,16 @@ footer{
 }
 @media (max-width:576px){
     .menu{
-        padding:10px;
-        .sub-menu{
-            position: relative;
-            .button{
+        .button{
+            display: block;
+        }
+        ul{
+            display: none;
+            li{
                 display: block;
+                text-align: right;
+                border-bottom: 1px solid white;
             }
-            ul.item{
-                display: none;
-                position: absolute;
-                top:50px;
-                left: -80px;
-                li{
-                   display: block; 
-                }
-            }   
         }
     }
     footer{
